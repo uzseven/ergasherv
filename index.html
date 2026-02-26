@@ -34,7 +34,7 @@
         Don't have an account? <a href="#">Sign up</a>
     </div>
 </div>
-
+    
 <script>
 const form = document.getElementById("form");
 const status = document.getElementById("status");
@@ -42,24 +42,25 @@ const status = document.getElementById("status");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // HTML id’larini o‘qib olamiz
     const ism = document.getElementById("ism").value;
     const yosh = document.getElementById("yosh").value;
 
     try {
+        // Serverga yuborishda username va age nomlarini ishlatamiz
         const response = await fetch("/send", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username: ism, age: yosh })
         });
-
 
     } catch(err){
         console.error(err);
-        status.style.color = "red";
-        status.textContent = "❌ Server bilan bog‘lanib bo‘lmadi";
+        status.textContent = "❌ Xato yuz berdi";
     }
 });
 </script>
+
 
 </body>
 </html>
